@@ -1,1 +1,1 @@
-igor loh
+Todo list written in vue, using pinia
