@@ -10,6 +10,10 @@ type Emits = {
   delete(): void
 }
 
+/**
+ * Functional component are used here for better performance because they have
+ * no reactivity and no instance.
+ */
 export const TodoItem: FunctionalComponent<Props, Emits> = (props, ctx) => {
   return h('div', { className: 'todo' }, [
     h('h2', [props.todo.name]),

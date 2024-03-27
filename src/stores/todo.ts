@@ -4,8 +4,8 @@ import { IsTodoArray, type Todo } from './types/todo'
 
 const todosKey = 'todos'
 
-const getTodosFromLocalStorage = (): Todo[] => {
-  const todos = localStorage.getItem(todosKey)
+const getTodosFromLocalStorage = (key: string): Todo[] => {
+  const todos = localStorage.getItem(key)
 
   if (!todos) {
     return []
@@ -25,7 +25,7 @@ export const updateStorage = (key: string, todos: Todo[]): void => {
 }
 
 export const useTodoStore = defineStore('todo', () => {
-  const todos = reactive<Todo[]>(getTodosFromLocalStorage())
+  const todos = reactive<Todo[]>(getTodosFromLocalStorage(todosKey))
 
   const removeTodo = (id: number) => {
     const index = todos.findIndex((todo) => todo.id === id)
