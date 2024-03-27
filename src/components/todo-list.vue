@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TodoItem from '@/components/todo-item/todo-item.vue'
+import TodoItem from '@/components/todo-item.vue'
 import { useTodoStore } from '@/stores/todo'
 import { ref } from 'vue'
 

@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import type { Props } from './props'
+import type { Todo } from '@/stores/types/todo'
+
+interface Props {
+  todo: Todo
+}
 
 const props = defineProps<Props>()
 
