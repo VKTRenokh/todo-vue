@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TodoItem from '@/components/todo-item.vue'
+import { TodoItem } from './todo-item-fc.ts'
 import { useTodoStore } from '@/stores/todo'
 import { ref } from 'vue'
 
@@ -25,7 +25,7 @@ const todoDescription = ref<string>('')
       <input type="text" v-model="todoDescription" placeholder="description" />
       <button @click="handleTodoCreate(todoName, todoDescription)">Create</button>
     </div>
-    <div v-for="todo in store.todos" :key="todo.name">
+    <div v-for="(todo, index) in store.todos" :key="todo.name + index">
       <TodoItem :todo="todo" @delete="handleTodoDelete(todo.id)" />
     </div>
   </div>

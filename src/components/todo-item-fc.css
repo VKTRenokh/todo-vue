@@ -1,0 +1,19 @@
+.todo {
+  border: 2px black solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+h2,
+p {
+  color: black;
+}
+
+button {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0;
+}
