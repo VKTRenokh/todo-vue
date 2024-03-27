@@ -2,10 +2,10 @@ import { reactive, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { IsTodoArray, type Todo } from './types/todo'
 
-const localStorageKey = 'todos'
+const todosKey = 'todos'
 
 const getTodosFromLocalStorage = (): Todo[] => {
-  const todos = localStorage.getItem(localStorageKey)
+  const todos = localStorage.getItem(todosKey)
 
   if (!todos) {
     return []
@@ -20,6 +20,10 @@ const getTodosFromLocalStorage = (): Todo[] => {
   return parsed
 }
 
+export const updateStorage = (key: string, todos: Todo[]): void => {
+  localStorage.setItem(key, JSON.stringify(todos))
+}
+
 export const useTodoStore = defineStore('todo', () => {
   const todos = reactive<Todo[]>(getTodosFromLocalStorage())
 
@@ -32,7 +36,7 @@ export const useTodoStore = defineStore('todo', () => {
 
     todos.splice(index, 1)
 
-    localStorage.setItem(localStorageKey, JSON.stringify(todos))
+    updateStorage(todosKey, todos)
   }
 
   const createTodo = (name: string, description: string) => {
@@ -42,7 +46,7 @@ export const useTodoStore = defineStore('todo', () => {
       description
     })
 
-    localStorage.setItem(localStorageKey, JSON.stringify(todos))
+    updateStorage(todosKey, todos)
   }
 
   return { todos, removeTodo, createTodo }
